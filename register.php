@@ -27,6 +27,7 @@
         <input type="email" name="email" placeholder="" />
         <p>Phone Number</p>
         <input type="text" name="phone" placeholder="" />
+        <p><?= (isset($gagal['phone'])) ? $gagal['phone'] : ''; ?></p>
         <p>Password</p>
         <input type="password" name="password" placeholder="" />
         <p>Re-type Password</p>
@@ -62,17 +63,13 @@
     $phone = $_POST['phone'];
     $password = $_POST['password'];
     $ulangpass = $_POST['ulangpassword'];
-
-    // include database connection file
-
-
-    // Insert user data into table
-    $result = mysqli_query($mysqli, "INSERT INTO user(email,phone,password) VALUES('$email','$phone','$password')");
-    $stmt = $mysqli->prepare($result);
-    if (!$result) {
-      printf("Error: %s\n", mysqli_error($mysqli));
-      exit();
-    }
+  }
+  // Insert user data into table
+  $result = mysqli_query($mysqli, "INSERT INTO user(email,phone,password) VALUES('$email','$phone','$password')");
+  $stmt = $mysqli->prepare($result);
+  if (!$result) {
+    printf("Error: %s\n", mysqli_error($mysqli));
+    exit();
   }
   ?>
 </body>
