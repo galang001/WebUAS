@@ -13,5 +13,5 @@ if ($cek > 0) {
     $_SESSION['email'] = $logout['email'];
     header("location:hal1.php");
 } else {
-    header("location:index.php");
+    echo "<script type='text/javascript'>alert('Email atau Password Salah!');location.href=\"index.php\";</script>";
 }
