@@ -56,20 +56,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <?php
-  include_once("config.php");
   // Check If form submitted, insert form data into users table.
   if (isset($_POST['Submit'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
     $ulangpass = $_POST['ulangpassword'];
-  }
-  // Insert user data into table
-  $result = mysqli_query($mysqli, "INSERT INTO user(email,phone,password) VALUES('$email','$phone','$password')");
-  $stmt = $mysqli->prepare($result);
-  if (!$result) {
-    printf("Error: %s\n", mysqli_error($mysqli));
-    exit();
+
+    include_once("config.php");
+
+    // Insert user data into table
+    $result = mysqli_query($mysqli, "INSERT INTO user(email,phone,password) VALUES('$email','$phone','$password')");
+    $stmt = $mysqli->prepare($result);
+    if (!$result) {
+      printf("Error: %s\n", mysqli_error($mysqli));
+      exit();
+    } else {
+      echo "<script type='text/javascript'>alert('Pendaftaran Akun Berhasil!');location.href=\"index.php\";</script>";
+    }
   }
   ?>
 </body>
