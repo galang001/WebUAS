@@ -41,58 +41,35 @@ nav .navbar-brand {
   margin-bottom: 18px !important;
 }
 
-.jumbotron {
-  background-color: black !important;
-}
-.carousel-item img {
-  width: 480px !important;
-  height: 480px !important;
-  margin: auto;
-  display: block;
-}
-
-.text {
-  font-family: Teko;
+div p {
+  font-family: "Teko", sans-serif;
   font-style: normal;
-  font-weight: medium;
-  font-size: 36px;
-  line-height: 137.3%;
-  /* identical to box height, or 33px */
-
-  letter-spacing: 0.03em;
-  text-transform: capitalize;
-
-  color: #ffffff;
-}
-
-div .carousel-caption {
-  font-family: Teko;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 48px;
+  font-weight: 200;
+  font-size: 24px;
   line-height: 137.3%;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: #ffffff;
-  -webkit-text-stroke: 3px black;
+  color: #fff !important;
 }
-table tr td {
-  color: #ffffff !important;
-}
-table thead {
+div {
   font-family: "Oswald:wght@300", sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 137.3%;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: #ffc700 !important;
+  color: #fff !important;
+}
+.dropdown-menu {
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+  letter-spacing: 0em;
 }
 
-.card {
-  color: white;
-  background-color: rgb(15, 15, 15) !important;
+input[type="text"],
+input[type="password"] {
+  width: 400px;
 }
 
 .footer {

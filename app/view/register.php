@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="stylesheet" type="text/css" href="assets/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../assets/style.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -15,7 +15,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-none">
-    <a class="navbar-brand" href="index.php">DIXIE</a>
+    <a class="navbar-brand" href="../../index.php">DIXIE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     </button>
   </nav>
@@ -27,7 +27,7 @@
         <input type="email" name="email" placeholder="" />
         <p>Phone Number</p>
         <input type="text" name="phone" placeholder="" />
-        <p><?= (isset($gagal['phone'])) ? $gagal['phone'] : ''; ?></p>
+        <p class="text-danger"><?= (isset($gagal['phone'])) ? $gagal['phone'] : ''; ?></p>
         <p>Password</p>
         <input type="password" name="password" placeholder="" />
         <p>Re-type Password</p>
@@ -57,23 +57,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <?php
   // Check If form submitted, insert form data into users table.
+  include_once("../../config/config.php");
+
   if (isset($_POST['Submit'])) {
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
-    $ulangpass = $_POST['ulangpassword'];
-
-    include_once("config.php");
-
-    // Insert user data into table
-    $result = mysqli_query($mysqli, "INSERT INTO user(email,phone,password) VALUES('$email','$phone','$password')");
-    $stmt = $mysqli->prepare($result);
-    if (!$result) {
-      printf("Error: %s\n", mysqli_error($mysqli));
-      exit();
-    } else {
-      echo "<script type='text/javascript'>alert('Pendaftaran Akun Berhasil!');location.href=\"index.php\";</script>";
+    if (!is_numeric($phone = $_POST['phone'])) {
+      $gagal['phone'] = "No Telepon Wajib Angka";
     }
+    $password = md5($_POST['password']);
+    $ulangpass = md5($_POST['ulangpassword']);
+    if (!isset($gagal)) {
+      // Insert user data into table
+      $result = mysqli_query($mysqli, "INSERT INTO user(email,phone,password) VALUES('$email','$phone','$password')");
+      $stmt = $mysqli->prepare($result);
+      if (!$result) {
+        printf("Error: %s\n", mysqli_error($mysqli));
+        exit();
+      } else {
+        echo "<script type='text/javascript'>alert('Pendaftaran Akun Berhasil!');location.href=\"../../index.php\";</script>";
+      }
+    }
+  } else {
+    echo '<p style"color:#f00">AASAS</p>';
   }
   ?>
 </body>

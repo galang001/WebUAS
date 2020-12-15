@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['email'] == '') {
-    header("location:login.php");
+    header("location:../controller/login.php");
 }
 
 // Create database connection using config file
-include_once("config.php");
+include_once("../../config/config.php");
 
 // Fetch all users data from database
 $result = mysqli_query($mysqli, "SELECT * FROM komik ORDER BY id_komik ASC");
@@ -18,7 +18,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM komik ORDER BY id_komik ASC");
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" type="text/css" href="assets/style2.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/style2.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -42,7 +42,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM komik ORDER BY id_komik ASC");
                     <a class="nav-link" href="#">My Collection</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kategori</a>
+                    <a class="nav-link" href="#"></a>
                 </li>
             </ul>
             <form class="form-inline ml-auto">
@@ -51,11 +51,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM komik ORDER BY id_komik ASC");
             </form>
             <ul class="navbar-nav col-2">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/account.png"> </a></img>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/account.png"> </a></img>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Setting Akun</a>
+                        <a class="dropdown-item" href="akun.php">Setting Akun</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php">Log Out</a>
+                        <a class="dropdown-item" href="../controller/logout.php">Log Out</a>
                     </div>
                 </li>
             </ul>
@@ -73,19 +73,19 @@ $result = mysqli_query($mysqli, "SELECT * FROM komik ORDER BY id_komik ASC");
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/img3.png" alt="First slide">
+                <img class="d-block w-100" src="../../assets/img3.png" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     <p>BATMAN #92</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 center" src="assets/img2.png" alt="First slide">
+                <img class="d-block w-100 center" src="../../assets/img2.png" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     <p>ATLA : THE SEARCH 1</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="assets/img4.png" alt="Third slide">
+                <img class="d-block w-100" src="../../assets/img4.png" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <p>ATLA : THE SEARCH 3</p>
                 </div>
@@ -124,7 +124,29 @@ $result = mysqli_query($mysqli, "SELECT * FROM komik ORDER BY id_komik ASC");
         }
         ?>
     </table>
+    <div class="text">
 
+        <p>COMIC LIST</p>
+        <P></P>
+    </div>
+    <?php
+    $result2 = mysqli_query($mysqli, "SELECT * FROM isikomik ORDER BY id_isikomik ASC");
+    while ($row = mysqli_fetch_array($result2)) {
+        echo "<div class='card'>";
+        echo "<h4 class='card-header'>" . $row['Judul'] . "</h4>";
+        echo "<div class='card-body'>";
+        echo "<div id='img'>";
+        echo "<img src='../../assets/" . $row['foto'] . "'width=250'></img>";
+        echo "<h5 class='card-text'>Sinopsis</h5>";
+        echo "<p class='card-text'>" . $row['comment'] . "</p>";
+        echo "<h6 class='card-text'>Tanggal Rilis : " . $row['tanggal'] . "</h6>";
+        echo "<a href='\' class='btn btn-warning'>Baca</a>&nbsp";
+        echo " </div>";
+        echo "</div>";
+        echo "</div>";
+        echo "<p></p>";
+    }
+    ?>
 
     <div class="footer">
         <blockquote class="blockquote mb-0">

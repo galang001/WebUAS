@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2020 at 03:00 PM
+-- Generation Time: Dec 15, 2020 at 12:17 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -25,6 +25,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admin` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `email`, `password`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `isikomik`
+--
+
+CREATE TABLE `isikomik` (
+  `id_isikomik` int(11) NOT NULL,
+  `Judul` varchar(50) NOT NULL,
+  `foto` varchar(100) NOT NULL,
+  `comment` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `isikomik`
+--
+
+INSERT INTO `isikomik` (`id_isikomik`, `Judul`, `foto`, `comment`, `tanggal`) VALUES
+(3, 'League Of Legends', 'Jax.jpg', 'League Of LegendsLeague Of Legends', '2020-12-12'),
+(4, 'Batman', 'Batman-92.jpg', 'Batman Vol 2', '2020-12-12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `komik`
 --
 
@@ -40,10 +81,11 @@ CREATE TABLE `komik` (
 --
 
 INSERT INTO `komik` (`id_komik`, `judul_komik`, `penerbit`, `date`) VALUES
-(1, 'Batman vol.92', 'DC Comics', '2020-10-10'),
+(1, 'Batman232', 'DC Comics', '2020-10-10'),
 (2, 'ATLA : The Search 3', 'Dark House Comics', '2020-10-14'),
 (3, 'One Piece vol.96', 'Shonen Jump', '2020-10-07'),
-(4, 'The Immortal Hulk vol.40', 'Marvel Comics', '2020-10-23');
+(4, 'Hulk Vol. 45', 'Marvel Comics', '2020-10-24'),
+(5, 'Detective Conan Vol. 454', 'Shonen', '2020-10-25');
 
 -- --------------------------------------------------------
 
@@ -63,14 +105,25 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `phone`, `password`) VALUES
-(1, 'galangwijaya@gmail.com', 9898, '12345678'),
-(2, 'galang@gmail.com', 812331, '12345678'),
-(3, 'asdasd@gmail.com', 9898, '12345678'),
-(4, 'a@gmail.com', 8123, '12345678');
+(1, 'admin', 1234, '21232f297a57a5a743894a0e4a801fc3'),
+(6, 'galang1@gmail.com', 123456, '5ea196b279213aaef9dccd35c8a5af69'),
+(7, 'coba2@gmail.com', 66666, '3ef3699d13dcb525f7dc10cae32eb7b7');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `isikomik`
+--
+ALTER TABLE `isikomik`
+  ADD PRIMARY KEY (`id_isikomik`);
 
 --
 -- Indexes for table `komik`
@@ -89,16 +142,28 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `isikomik`
+--
+ALTER TABLE `isikomik`
+  MODIFY `id_isikomik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `komik`
 --
 ALTER TABLE `komik`
-  MODIFY `id_komik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_komik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

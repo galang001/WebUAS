@@ -22,13 +22,13 @@
     <div class="signup3">
         <div class="signup">
             <h2>Log In</h2>
-            <form action="login.php" method="POST" name="login">
+            <form action="app/controller/login.php" method="POST" name="login">
                 <p>Email</p>
                 <input class="form-control" type=" email" name="email" placeholder="" />
                 <p>Password</p>
                 <input class="form-control" type="password" name="password" placeholder="" />
-                <input type="submit" name="submit2" class="btn btn-sucsess" value="Log In" />
-                <p>Belum memiliki akun?<a href="register.php"> Klik disini!</p>
+                <input type="submit" name="submit" class="btn btn-sucsess" value="Log In" />
+                <p>Belum memiliki akun?<a href="app/view/register.php"> Klik disini!</a></p>
 
             </form>
         </div>
@@ -48,7 +48,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </body>
+
 
 </html>
